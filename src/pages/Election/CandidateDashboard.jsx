@@ -661,7 +661,7 @@ const CandidateDashboard = () => {
       setStartingElection(true);
 
       // 🔥 CALL BACKEND IMMEDIATELY
-      await axiosInstance.put(`/elections/${electionDocumentId}/restart`, {
+      await axiosInstance.put(`/election-names/${electionDocumentId}/restart`, {
         restart_reason: restartReason.trim(),
       });
 
@@ -707,7 +707,8 @@ const CandidateDashboard = () => {
       const startUTC = new Date(startTime).toISOString();
       const endUTC = new Date(endTime).toISOString();
 
-      const endpoint = `/elections/${electionDocumentId}/start`;
+      const endpoint = `/election-names/${electionDocumentId}/start`;
+
 
       const payload = {
         start_time: startUTC,
@@ -1250,7 +1251,7 @@ const CandidateDashboard = () => {
                       return;
 
                     await axiosInstance.put(
-                      `/elections/${electionDocumentId}/end`
+                      `/election-names/${electionDocumentId}/end`
                     );
 
                     showAlert("success", "Election ended successfully");
